@@ -24,12 +24,12 @@ const Carousel: CarouselFC = ({ children: slider, autoSlide = false, autoslideIn
     return (
         <div className="overflow-hidden relative">
             <div
-                className="flex transition-transform ease-out duration-500"
+                className="flex transition-transform ease-out duration-500 "
                 style={{ transform: `translateX(-${curr * 100}%)` }}
             >
                 {slider}
             </div>
-            <div className="absolute inset-0 flex items-center justify-between p-4">
+            {/* <div className="absolute inset-0 flex items-center justify-between p-4">
                 <button
                     onClick={prev}
                     className="p-[.3rem] pr-1.5 rounded-full shadow bg-white/80 hover:bg-white/70 text-gray-900 cursor-pointer"
@@ -42,14 +42,16 @@ const Carousel: CarouselFC = ({ children: slider, autoSlide = false, autoslideIn
                 >
                     <IoChevronForwardSharp size={20} />
                 </button>
-            </div>
+            </div> */}
 
-            <div className="absolute right-0 bottom-4 left-0">
+            <div className="absolute right-0 bottom-4 left-0  ">
                 <div className="flex items-center justify-center gap-2">
                     {slider.map((_, i) => (
                         <div
-                            className={`transition-all w-3 h-3 bg-white rounded-full ${
-                                curr === i ? "p-2" : "bg-opacity-50"
+                            key={i}
+                            onClick={() => setCurr(i)}
+                            className={`transition-all w-2 h-2 bg-white rounded-full ${
+                                curr === i ? "p-1" : "bg-opacity-50"
                             }`}
                         />
                     ))}
